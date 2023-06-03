@@ -42,6 +42,19 @@ services:
             - "3388:3306"
         networks:
             - laravel
+    
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin_on
+        links:
+            - db
+        restart: always
+        environment:
+            - PMA_ARBITRARY=1
+        ports:
+            - 8899:80
+        networks:
+            - laravel
 
     # queue
     queue:
