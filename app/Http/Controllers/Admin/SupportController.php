@@ -22,9 +22,16 @@ class SupportController extends Controller
     {
         // $supports = $support->all();
         
-        $supports = $this->service->getAll($request->filter);
+        $supports = $this->service->paginate(
+            pages: $request->get('page', 1),
+            totalPerPages: $request->get('per_page', 2),
+            filter: $request->filter
+        );
+
+        $filters = ['filter' => $request->get('filter', '')];
+        // dd($supports->items());
        
-        return view('admin/supports/index', compact('supports'));
+        return view('admin/supports/index', compact('supports', 'filters'));
     }
 
     public function show(string $id)
