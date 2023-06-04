@@ -1,5 +1,6 @@
 <h1>Listagem dos suportes</h1>
 {{-- @dd($supports) --}}
+
 <a href="{{route('supports.create')}}">Criar Dúvida</a>
 <br>
 <br>
@@ -14,7 +15,7 @@
         @foreach ($supports->items() as $support)
             <tr>
                 <td>{{$support->subject}}</td>
-                <td>{{$support->status}}</td>
+                <td>{{getStatusSupport($support->status)}}</td>
                 <td>{{$support->body}}</td>
                 <td>
                     <a href="{{route('supports.show', $support->id)}}">Detalhes</a>

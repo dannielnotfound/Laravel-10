@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\{SupportController};
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
+use App\Enums;
+use App\Enums\SupportStatus;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// Route::get('/teste', function (){
+//     dd(array_column(SupportStatus::cases(), 'value'));
+// });
+
 
 
 Route::post('/supports/create', [SupportController::class, 'store'])->name('supports.store');
